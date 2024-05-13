@@ -1,0 +1,12 @@
+Running the Program
+To run the Haskell program, save the code in a file named Main.hs and use the following commands in your terminal:
+
+Compile the Program:
+
+Copy code
+ghc -o MyHaskellApp Main.hs
+
+Run the Program:
+
+Copy code
+./MyHaskellApp
