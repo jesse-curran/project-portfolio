@@ -1,3 +1,2 @@
-# Read Me 
 
-# Repo to hold all my programs of various types
+### Hello and welcome to my project portfolio!
