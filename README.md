@@ -1,14 +1,9 @@
 
-# Hello and Welcome!
+Hello and welcome to the best project portfolio you've ever seen!!!
 
-My name is Jesse Curran and this repository serves as my technical project portfolio.
-Please don't be shy! Take a look around, watch a demo, critique my work, or send me a message :)
+My name is Jesse Curran and I am thrilled you decided to learn more about my programming experience.
+In this repository you will find codebases and YouTube demo links for each project.
 
-A bit of background on this project list, I created each project with one goal.
-That goal, build with passion. Each project is something I found fun to do.
-Some were fun and terrifying, others were just fun.
+Thanks for taking a look at my work, I appreciate it!
 
-Thank you for taking a look at my work, I appreciate it!
-
-Take care, 
 Jesse
