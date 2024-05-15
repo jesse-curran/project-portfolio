@@ -1,4 +1,7 @@
 
-### Hello and welcome to my project portfolio!
+# Hello and Welcome !!!
 
-### Please see the YouTube video links to see a showcase of each project
+My name is Jesse Curran and I am thrilled you decided to learn more about my programming experience.
+In this repository you will find Codebases and YouTube Demos for each project.
+
+Thanks for taking a look at my work, I appreciate it!
