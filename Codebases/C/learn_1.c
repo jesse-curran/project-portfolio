@@ -29,7 +29,15 @@ type variableName = value;
 
 #include <stdio.h>  // this is a "header file library". This lets us work with input and output functions, like printf()
 
+#include <stdbool.h>    // import this header file for boolean data type
+
+#include <string.h> // import this header file for string operations beyond basic. strcpy(), strcmp(), strcat()
+
+
 int main() {
+
+    const int BIRTHYEAR = 1980; // const declares this variable unchangeable and read-only
+
     printf("Hello World!\n"); // note, have to use double quotes "" when working with text.
     printf("This is a string with newline\n");
 
@@ -50,10 +58,99 @@ int main() {
     printf("Size of myLetter variable is %lu bytes!\n\n", myLetter);   // %lu is used to see bytes
     
     // Add variables together
-    int x = 5;
+    int x = 5;    
     int y = 6;
     int sum = x + y;
     printf("x + y = %d\n", sum);
+
+    // Boolean data type
+    int x2 = 10;
+    int y2 = 9;
+    printf("\n%d > %d == Boolean: %d\n", x2, y2, x2 > y2);
+
+    // short-hand if else: ternary operator -> variable = (condition) ? expressionTrue : expressionFalse;
+    int time = 20;
+    (time < 18) ? printf("\nGood day.\n") : printf("\nGood evening.\n");
+
+    // Example of Switch statement. Used instead of many if else statments.
+    int day = 4;
+
+    printf("\n");
+
+    switch (day) {
+    case 1:
+        printf("Monday");
+        break;
+    case 2:
+        printf("Tuesday");
+        break;
+    case 3:
+        printf("Wednesday");
+        break;
+    case 4:
+        printf("Thursday");
+        break;
+    case 5:
+        printf("Friday");
+        break;
+    case 6:
+        printf("Saturday");
+        break;
+    case 7:
+        printf("Sunday");
+        break;
+    }
+
+    printf("\n\n");
+
+    // While loop:
+    int a = 0;
+    
+    while (a < 5) {
+        printf("%d\n", a);
+        a++;
+    }
+    printf("\n");
+
+    // For loop
+
+    int z;
+
+    for (z = 0; z < 5; z++) {
+        printf("%d\n", z);
+    }
+    printf("\n");
+
+    // Array
+    int myNumbers[] = {25, 50, 75, 100};
+    printf("%d", myNumbers[0]);
+    printf("\n\n");
+
+    // 2D array for loop
+    int matrix[2][3] = { {1, 4, 2}, {3, 6, 8} };
+
+    int i, j;
+    for (i = 0; i < 2; i++) {
+    for (j = 0; j < 3; j++) {
+        printf("%d\n", matrix[i][j]);
+    }
+    }
+    printf("\n");
+
+
+    // how to get user input
+    // Create an integer variable that will store the number we get from the user
+    int myNumber;
+
+    // Ask the user to type a number
+    printf("Type a number: \n");
+
+    // Get and save the number the user types
+    scanf("%d", &myNumber);
+
+    // Output the number the user typed
+    printf("Your number is: %d", myNumber);
+
 
     return 0;   
 }
