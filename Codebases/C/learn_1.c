@@ -20,7 +20,9 @@ creating variables ->
 type variableName = value;
 
 4) 
-
+returnType functionName(parameter1, parameter2, parameter3) {
+  // code to be executed
+}
 
 */
 
@@ -55,7 +57,7 @@ int main() {
     printf("This is a text variable printed (string) %s\n", myText);
     printf("This is a double decimal. Precise up to about 15 digits %.2lf\n", myDoubleNum); // .2 means to 2 decimals
     printf("\n");
-    printf("Size of myLetter variable is %lu bytes!\n\n", myLetter);   // %lu is used to see bytes
+    printf("Size of myFloatNum variable is %zu bytes!\n\n", sizeof(myFloatNum));   // %lu is used to see bytes
     
     // Add variables together
     int x = 5;    
@@ -131,13 +133,13 @@ int main() {
 
     int i, j;
     for (i = 0; i < 2; i++) {
-    for (j = 0; j < 3; j++) {
-        printf("%d\n", matrix[i][j]);
-    }
+        for (j = 0; j < 3; j++) {
+            printf("%d\n", matrix[i][j]);
+        }
     }
     printf("\n");
 
-
+    /*
     // how to get user input
     // Create an integer variable that will store the number we get from the user
     int myNumber;
@@ -150,9 +152,19 @@ int main() {
 
     // Output the number the user typed
     printf("Your number is: %d", myNumber);
+    */
 
-
+   
     return 0;   
 }
+
+struct MyStructure {   // Structure declaration
+    int myNum;           // Member (int variable)
+    char myLetter;       // Member (char variable)
+}; // End the structure with a semicolon
+
+
+
+
 
 
