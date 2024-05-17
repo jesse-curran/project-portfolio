@@ -8,5 +8,3 @@ In this repository, you'll find:
 - 🎥 **YouTube Demos** to see them in action
 
 Thanks for stopping by and taking a look at my work. I appreciate it! 🙌
-
-Happy coding! 💻
