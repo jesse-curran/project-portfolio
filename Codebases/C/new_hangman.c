@@ -4,6 +4,15 @@
 #include <ctype.h>  // For character handling functions.
 #include <stdbool.h>
 
+/* INSTRUCTIONS:
+    Go into your terminal.
+    Have a C compiler installed.
+    e.g. run clang -o hangman_exe new_hangman.c  
+    then run ./hangman_exe
+    play the game
+    voila          
+*/
+
 // Function to print hangman after each try; update when unsuccessful attempt
 void printHangman(int t) {
     switch (t) {
