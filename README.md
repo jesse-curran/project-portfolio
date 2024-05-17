@@ -1,6 +1,6 @@
 # 👋 Hello!
 
-Welcome to my programming portfolio! I'm Jesse Curran, and I'm thrilled that you're here to check out my projects. 🚀
+Welcome to my programming portfolio! I'm Jesse Curran, and I'm thrilled that you're here to check out my projects.
 
 In this repository, you'll find:
 
