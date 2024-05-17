@@ -3,6 +3,7 @@
 #include <string.h> // For string manipulation functions.
 #include <ctype.h>  // For character handling functions.
 #include <stdbool.h>
+#include <time.h>   // For random number generation
 
 /* INSTRUCTIONS:
     Go into your terminal.
@@ -93,11 +94,11 @@ void greetingMsg() {
 }
 
 // Function to print farewell message
-void farewellMsg(bool result) {
+void farewellMsg(bool result, char *answer) {
     if (result) {
         printf("WAHOOO !!! Congrats on your victory! Goodbye :)\n\n\n");
     } else {
-        printf("NOOOOOOOOO. You lost :( \nBetter luck next time.\n\n\n");
+        printf("NOOOOOOOOO. You lost :( \n Correct answer was %s\n\n\n", answer);
     }
 }
 
@@ -122,6 +123,30 @@ bool checkGuess(char guess, char *answer, int *position) {
     return false;
 }
 
+// Function to grab a random answer from answer.txt file
+char* grabTextAnswer() {
+    static char answer[100];
+    char words[100][100];
+    int count = 0;
+    FILE *file = fopen("answer_100.txt", "r");
+    if (file == NULL) {
+        printf("Error opening file!\n");
+        exit(1);
+    }
+
+    while (fgets(words[count], sizeof(words[count]), file)) {
+        words[count][strcspn(words[count], "\n")] = '\0'; // Remove newline character
+        count++;
+    }
+    fclose(file);
+
+    srand(time(NULL));
+    int randomIndex = rand() % count;
+    strcpy(answer, words[randomIndex]);
+
+    return answer;
+}
+
 // Drive the game, calling functions
 int main() {
 
@@ -129,7 +154,7 @@ int main() {
     int t = 0;
     int position;
     char guess;
-    char answer[] = "STUMP";
+    char *answer = grabTextAnswer();
     int wordCount = strlen(answer);
     char userAnswer[wordCount + 1];
     bool guessResult;
@@ -186,7 +211,7 @@ int main() {
     }
 
     // GAME ENDING
-    farewellMsg(gameResult);
+    farewellMsg(gameResult, answer);
 
     return 0;
 }
