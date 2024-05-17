@@ -4,7 +4,7 @@
 #include <ctype.h>  // For character handling functions.
 #include <stdbool.h>
 
-// Function to print hangman after each try
+// Function to print hangman after each try; update when unsuccessful attempt
 void printHangman(int t) {
     switch (t) {
         case 0:
@@ -92,10 +92,12 @@ void farewellMsg(bool result) {
     }
 }
 
+// Function to grab user input guess
 char getUserGuess() {
     char guess;
-    printf("\nType an UPPERCASE letter to guess: \n");
+    printf("\nType a letter to guess: \n");
     scanf(" %c", &guess);
+    guess = toupper(guess);
     printf("Your guess was: '%c'\n", guess);
     return guess;
 }
@@ -113,26 +115,33 @@ bool checkGuess(char guess, char *answer, int *position) {
 
 // Drive the game, calling functions
 int main() {
+
+    // Initializing Variables -------------------------------
     int t = 0;
-    int wordCount = 5;
+    int position;
     char guess;
-    bool guessResult;
     char answer[] = "STUMP";
+    int wordCount = strlen(answer);
+    char userAnswer[wordCount + 1];
+    bool guessResult;
     bool playing = true;
     bool gameResult = false;
-    int position;
-    char userAnswer[wordCount + 1];
+    // ------------------------------------------------------
+
+    // fill userAnswer (block of memory) with '_' to 
     memset(userAnswer, '_', wordCount);
+
+    // mark where string length ends in memory; null terminator '\0'
+    // the ending is the length of the answer text
     userAnswer[wordCount] = '\0';
 
     greetingMsg();
 
-    // play hangman
-
-    // begin with showing user blank game canvas
+    // GAME STARTS. Begin with showing blank game canvas.
     printHangman(t);
     printf("%s\n", userAnswer);
 
+    // PLAY THE GAME
     while (playing) {
         guess = getUserGuess();
 
@@ -162,11 +171,12 @@ int main() {
         }
 
         if (t == 6 || strcmp(userAnswer, answer) == 0) {
-            playing = false;    // end game when 6 tries or word guessed
+            playing = false;    // end game when 6 tries or word guessed reached
             gameResult = (strcmp(userAnswer, answer) == 0);
         }
     }
 
+    // GAME ENDING
     farewellMsg(gameResult);
 
     return 0;
