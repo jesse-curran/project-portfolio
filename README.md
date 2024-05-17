@@ -1,7 +1,12 @@
+# 👋 Hello!
 
-# Hello!
+Welcome to my programming playground! I'm Jesse Curran, and I'm thrilled that you're here to check out my projects. 🚀
 
-My name is Jesse Curran and I am thrilled you decided to learn more about my programming experience.
-In this repository you will find Codebases and YouTube Demos for each project.
+In this repository, you'll find:
 
-Thanks for taking a look at my work, I appreciate it!
+- 📂 **Codebases** for each project
+- 🎥 **YouTube Demos** to see them in action
+
+Thanks for stopping by and taking a look at my work. I appreciate it! 🙌
+
+Happy coding! 💻
