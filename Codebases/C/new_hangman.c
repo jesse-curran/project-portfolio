@@ -76,21 +76,6 @@ void printHangman(int t) {
     }
 }
 
-void printWordProgress(int wordCount, char guess, int position, bool guessResult, int tryNumber, char *userAnswer) {
-    
-    
-    for (int i = 0; i < wordCount; i++) {
-        if (tryNumber == 0) {
-            printf(" _ ");
-        } else if (userAnswer[i] != '_') {
-            printf(" %c ", userAnswer[i]);
-        } else {
-            printf(" _ ");
-        }
-    }
-    printf("\n");
-}
-
 // Function to print greeting message
 void greetingMsg() {
     printf("\n\n\nWelcome to the game of HANGMAN!\n");
@@ -101,9 +86,9 @@ void greetingMsg() {
 // Function to print farewell message
 void farewellMsg(bool result) {
     if (result) {
-        printf("WAHOOO !!! Congrats on your victory! Goodbye :)\n");
+        printf("WAHOOO !!! Congrats on your victory! Goodbye :)\n\n\n");
     } else {
-        printf("NOOOOOOOOO. You lost :( \nBetter luck next time.");
+        printf("NOOOOOOOOO. You lost :( \nBetter luck next time.\n\n\n");
     }
 }
 
@@ -146,7 +131,6 @@ int main() {
 
     // begin with showing user blank game canvas
     printHangman(t);
-    //printWordProgress(wordCount, guess, position, guessResult, t, userAnswer);
     printf("%s\n", userAnswer);
 
     while (playing) {
@@ -169,13 +153,11 @@ int main() {
         if (!guessResult) { // incorrect guess
             t++;
             printHangman(t);
-            //printWordProgress(wordCount, guess, position, guessResult, t, userAnswer);
             printf("%s\n", userAnswer);
+
         } else {    // correct guess
             userAnswer[position] = guess;
-            //printf("User answer text array is now %s\n", userAnswer);
             printHangman(t);
-            //printWordProgress(wordCount, guess, position, guessResult, t, userAnswer);
             printf("%s\n", userAnswer);
         }
 
