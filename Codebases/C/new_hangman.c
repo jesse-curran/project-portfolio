@@ -4,6 +4,7 @@
 #include <ctype.h>  // For character handling functions.
 #include <stdbool.h>
 
+
 // function to print hangman after each try
 void printHangman(int t) {
     switch (t) {
@@ -92,24 +93,55 @@ void farewellMsg(bool result) {
     }
 }
 
+// Static function to print underscores for words to go above
+void printUnderscores(int wordCount) {
+    int i;
+    for (i = 0; i < wordCount; i++) {
+        printf(" _ ");
+    }
+    printf("\n");
+}
+
+char getUserGuess() {
+    char guess;
+    printf("Type a letter to guess: \n");
+    scanf("%c", &guess);
+    printf("Your guess was: '%c'", guess);
+}
+
+bool calcGuessResult(char guess, answer) {
+    // iterate over word, check guess char to each word, return true or false
+    bool result;
+    for (i = 0; i < 5; i++) {
+        if ()
+    }
+}
 
 // Drive the game, calling functions
 int main() {
     int t = 1;
     bool currResult;
     bool endResult;
+    int wordCount = 5;
+    char guess;
+    bool guessResult;
+    char answer[] = "Irate";
 
     greetingMsg();
 
-    //getUserGuess();
-
     while (t <= 6) {
-        if (t == 1){ // when first guess
 
-
+        if (t == 1) { // when first guess, print blank game above
+            printHangman(0);               // or when guess was true
+            printUnderscores(wordCount);
         }
 
+        guess = getUserGuess(); // for ex, guess = 'A'
+        guessResult = calcGuessResult(guess, answer);
+        
         printHangman(t);
+
+        printUnderscores(wordCount);
         t++;
     }
 
