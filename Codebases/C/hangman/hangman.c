@@ -125,26 +125,37 @@ bool checkGuess(char guess, char *answer, int *position) {
     return false;
 }
 
-// Function to grab a random wordle word from answer.txt file each time
+// Function to grab a random word from answer.txt file each time
 char* grabTextAnswer() {
-    static char answer[100];
-    char words[100][100];
-    int count = 0;
-    FILE *file = fopen("answer_100.txt", "r");
+    static char answer[3000]; // Buffer to store the selected word.
+    char lines[3000][10]; // Array to store multiple words. Assumes each word won't exceed 50 characters.
+    int numWords = 0;
+    char line[50];
+
+    FILE *file = fopen("answer.txt", "r");
     if (file == NULL) {
         printf("Error opening file!\n");
         exit(1);
     }
 
-    while (fgets(words[count], sizeof(words[count]), file)) {
-        words[count][strcspn(words[count], "\n")] = '\0'; // Remove newline character
-        count++;
+    // Read words into the array
+    while (fgets(line, sizeof(line), file) != NULL && numWords < 3000) {
+        line[strcspn(line, "\n")] = 0; // Remove newline character
+        strcpy(lines[numWords], line);
+        numWords++;
     }
+
     fclose(file);
 
-    srand(time(NULL));
-    int randomIndex = rand() % count;
-    strcpy(answer, words[randomIndex]);
+    // If no words were read, return an empty string
+    if (numWords == 0) {
+        printf("No words found in file.\n");
+        return answer;
+    }
+
+    // Initialize random seed and choose a random word from the array
+    srand((unsigned)time(NULL));
+    strcpy(answer, lines[rand() % numWords]); // Copy a random word to answer
 
     return answer;
 }
