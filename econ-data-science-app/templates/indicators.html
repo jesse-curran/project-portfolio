@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macro-Indicators Page</title>
+    <style>
+      table {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        border-collapse: collapse;
+        margin: 0 auto;
+      }
+
+      th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Macroeconomic Indicators</h1>
+    <h4>Ready to dive into the data, filter and download? This is the place!</h4>
+    <form action="/filtered_indicators" method="post">
+      <label for="start_date">Start Date:</label>
+      <input type="date" id="start_date" name="start_date">
+      <label for="end_date">End Date:</label>
+      <input type="date" id="end_date" name="end_date">
+      <input type="submit" value="Date Filter">
+    </form>
+
+    <form action="/column_select" method="post">
+      <label for="columns">Indicators Drop-Down:</label><br>
+      <select name="columns" id="columns" multiple>
+        {% for column in df_columns %}
+          <option value="{{ column }}">{{ column }}</option>
+        {% endfor %}
+      </select>
+      <input type="submit" value="Select Indicator">
+    </form>
+
+    <a href="/indicators">
+      <button>Undo/Redo</button>
+    </a>
+    <a href="/">
+      <button>Home</button>
+    </a>
+    <a href="/about">
+      <button>About</button>
+    </a>
+    <a href="/faq">
+      <button>FAQ</button>
+    </a>
+
+    {{ table_html | safe }}
+
+    <a href="/download_excel">
+      <button title="NOTE: For most purposes, excel download is best. Format .xlsx">Download Excel</button>
+    </a>
+    <a href="/download_csv">
+      <button title="Warning: Will not work perfectly with Excel. NOTE: For experienced users, for specific data export purposes.">Download CSV</button>
+    </a>
+    <a href="/download_json">
+      <button title="Warning: Large file size. NOTE: For experienced users, for specific data export purposes.">Download JSON</button>
+    </a>
+  </body>
+</html>
