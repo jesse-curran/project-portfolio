@@ -11,8 +11,6 @@ def get_macro_data():
     # Set your FRED API key
     pdr.fred.FredReader.api_key = "562e4d174454e09b73641aa20a5c0bed"
 
-
-
     # Define the macroeconomic indicators to fetch
     indicators = {
         "GDP": "GDPC1",                         # real GDP 
@@ -20,45 +18,11 @@ def get_macro_data():
         "Unemployment_Rate": "UNRATE",          # seasonally adjusted
         "Federal_Funds_Rate": "FEDFUNDS",       # effective, not seasonal
         "10Y_Treasury_Yield": "GS10",
-        "Healthcare_Expenditure": "W823RC1Q027SBEA",
-        "Employment_Healthcare_Industry": "CES6562000001",
-        "Pharmaceutical_and_Medicine_Manufacturing": "PCU32543254",
-        "Employment_in_Nursing_and_Residential_Care": "CES6562100001",
     }
-        
-    '''
-        ~ Future Nice to Haves Below ~
-        
-        # Unemployment rate
-        "Unemployment_Rate_WA": "WAUR",
-        "Unemployment_Rate_MT": "MTUR",
-        "Unemployment_Rate_OR": "ORUR",
-        "Unemployment_Rate_CA": "CAUR",
-        "Unemployment_Rate_AK": "AKUR",
-        "Unemployment_Rate_TX": "TXUR",
-
-        # Healthcare expenditure 
-        "Healthcare_Expenditure_WA": "WAPCEHLTHCARE",
-        "Healthcare_Expenditure_MT": "MTPCEHLTHCARE",
-        "Healthcare_Expenditure_OR": "ORPCEHLTHCARE",
-        "Healthcare_Expenditure_CA": "CAPCEHLTHCARE",
-        "Healthcare_Expenditure_AK": "AKPCEHLTHCARE",
-        "Healthcare_Expenditure_TX": "TXPCEHLTHCARE",
-
-        # Employment in healthcare industry
-        "Employment_Healthcare_Industry_WA": "",
-        "Employment_Healthcare_Industry_MT": "",
-        "Employment_Healthcare_Industry_OR": "",
-        "Employment_Healthcare_Industry_CA": "",
-        "Employment_Healthcare_Industry_AK": "",
-        "Employment_Healthcare_Industry_TX": "",
-        
-    '''
-
 
     # Define the date range for the data
     start_date = "2021-01-01"
-    end_date = today
+    end_date = "2021-12-31"
 
     # Fetch the data and store it in a dictionary of DataFrames
     dataframes = {}
@@ -70,6 +34,10 @@ def get_macro_data():
 
     # To get a de-fragmented frame, create a copy
     merged_data = temp_merged_data.copy()
+
+    # Time to work magic on the merged_data df
+
+    # 
 
     # Define the processing functions
     def calculate_percentage_change(df, column):
@@ -106,15 +74,15 @@ def get_macro_data():
     # Fill NaN values with the appropriate method (forward fill or backward fill)
     merged_data = merged_data.fillna(method='ffill').fillna(method='bfill')
 
-    print(merged_data.head())
+    #merged_data.head()
 
-    output_file_csv = '/Users/jessecurran/CS361/macro-dashboard/macro_data.csv'
+    output_file_csv = '/Users/jessecurran/_PORTFOLIO/my-programs/econ-data-science-app/macro_data.csv'
     merged_data.to_csv(output_file_csv)
 
-    output_file_excel = '/Users/jessecurran/CS361/macro-dashboard/macro_data.xlsx'
+    output_file_excel = '/Users/jessecurran/_PORTFOLIO/my-programs/econ-data-science-app/macro_data.xlsx'
     merged_data.to_excel(output_file_excel)
 
-    output_file_json = '/Users/jessecurran/CS361/macro-dashboard/macro_data.json'
+    output_file_json = '/Users/jessecurran/_PORTFOLIO/my-programs/econ-data-science-app/macro_data.json'
     merged_data.to_json(output_file_json)
 
     return 
