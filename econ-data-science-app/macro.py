@@ -35,10 +35,6 @@ def get_macro_data():
     # To get a de-fragmented frame, create a copy
     merged_data = temp_merged_data.copy()
 
-    # Time to work magic on the merged_data df
-
-    # 
-
     # Define the processing functions
     def calculate_percentage_change(df, column):
         df[f"{column}_pct_change"] = df[column].pct_change() * 100

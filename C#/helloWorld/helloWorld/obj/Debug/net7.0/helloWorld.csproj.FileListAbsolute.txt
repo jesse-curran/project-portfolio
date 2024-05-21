@@ -1,0 +1,14 @@
+/Users/jessecurran/_PORTFOLIO/my-programs/C#/helloWorld/helloWorld/bin/Debug/net7.0/helloWorld
+/Users/jessecurran/_PORTFOLIO/my-programs/C#/helloWorld/helloWorld/bin/Debug/net7.0/helloWorld.deps.json
+/Users/jessecurran/_PORTFOLIO/my-programs/C#/helloWorld/helloWorld/bin/Debug/net7.0/helloWorld.runtimeconfig.json
+/Users/jessecurran/_PORTFOLIO/my-programs/C#/helloWorld/helloWorld/bin/Debug/net7.0/helloWorld.dll
+/Users/jessecurran/_PORTFOLIO/my-programs/C#/helloWorld/helloWorld/bin/Debug/net7.0/helloWorld.pdb
+/Users/jessecurran/_PORTFOLIO/my-programs/C#/helloWorld/helloWorld/obj/Debug/net7.0/helloWorld.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jessecurran/_PORTFOLIO/my-programs/C#/helloWorld/helloWorld/obj/Debug/net7.0/helloWorld.AssemblyInfoInputs.cache
+/Users/jessecurran/_PORTFOLIO/my-programs/C#/helloWorld/helloWorld/obj/Debug/net7.0/helloWorld.AssemblyInfo.cs
+/Users/jessecurran/_PORTFOLIO/my-programs/C#/helloWorld/helloWorld/obj/Debug/net7.0/helloWorld.csproj.CoreCompileInputs.cache
+/Users/jessecurran/_PORTFOLIO/my-programs/C#/helloWorld/helloWorld/obj/Debug/net7.0/helloWorld.dll
+/Users/jessecurran/_PORTFOLIO/my-programs/C#/helloWorld/helloWorld/obj/Debug/net7.0/refint/helloWorld.dll
+/Users/jessecurran/_PORTFOLIO/my-programs/C#/helloWorld/helloWorld/obj/Debug/net7.0/helloWorld.pdb
+/Users/jessecurran/_PORTFOLIO/my-programs/C#/helloWorld/helloWorld/obj/Debug/net7.0/helloWorld.genruntimeconfig.cache
+/Users/jessecurran/_PORTFOLIO/my-programs/C#/helloWorld/helloWorld/obj/Debug/net7.0/ref/helloWorld.dll

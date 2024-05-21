@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "rhzoOuHcL+8=",
+  "success": true,
+  "projectFilePath": "/Users/jessecurran/_PORTFOLIO/my-programs/C#/helloWorld/helloWorld/helloWorld.csproj",
+  "expectedPackageFiles": [
+    "/Users/jessecurran/.nuget/packages/microsoft.netcore.app.ref/7.0.19/microsoft.netcore.app.ref.7.0.19.nupkg.sha512",
+    "/Users/jessecurran/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.19/microsoft.aspnetcore.app.ref.7.0.19.nupkg.sha512",
+    "/Users/jessecurran/.nuget/packages/microsoft.netcore.app.host.osx-x64/7.0.19/microsoft.netcore.app.host.osx-x64.7.0.19.nupkg.sha512"
+  ],
+  "logs": []
+}
