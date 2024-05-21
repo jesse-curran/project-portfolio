@@ -115,34 +115,37 @@ char getUserGuess() {
 }
 
 // Function to check if the guess is in the word and update the position
-bool checkGuess(char guess, char *answer, int *position) {
+bool checkGuess(char guess, char *answer, bool *positions) {
+    bool found = false;
     for (unsigned long i = 0; i < strlen(answer); i++) {
         if (answer[i] == guess) {
-            *position = i;
-            return true;
+            positions[i] = true;
+            found = true;
         }
     }
-    return false;
+    return found;
 }
+
 
 // Function to grab a random word from answer.txt file each time
 char* grabTextAnswer() {
     static char answer[3000]; // Buffer to store the selected word.
-    char lines[3000][10]; // Array to store multiple words. Assumes each word won't exceed 10 characters.
-    int numWords = 0;
-    char line[50];
+    char lines[3000][6]; // 2D array storing up to 3000 words, each of length 5 + null terminator
+    int numWords = 0;   // number of words read in the file
+    char line[50];  // buffer to read each line from the file
 
-    FILE *file = fopen("answer.txt", "r");
+    FILE *file = fopen("wordle_answers.txt", "r");  // open file, read. 
     if (file == NULL) {
         printf("Error opening file!\n");
         exit(1);
     }
 
-    // Read words into the array
+    // strcpy(destination, source);
+    // Read words from the file. each loop is one word read, into the lines array.
     while (fgets(line, sizeof(line), file) != NULL && numWords < 3000) {
-        line[strcspn(line, "\n")] = 0; // Remove newline character
-        strcpy(lines[numWords], line);
-        numWords++;
+        line[strcspn(line, "\n")] = 0; // Remove all newline characters, one word at a time. GRAB ANSWER.
+        strcpy(lines[numWords], line);  // copy the line word answers minus newline, put into answer array lines
+        numWords++; // used to count words read and iterate to next word
     }
 
     fclose(file);
@@ -156,6 +159,11 @@ char* grabTextAnswer() {
     // Initialize random seed and choose a random word from the array
     srand((unsigned)time(NULL));
     strcpy(answer, lines[rand() % numWords]); // Copy a random word to answer
+    
+    // quick convert answer characters to upper
+    for (int i = 0; answer[i] != '\0'; i++) {
+        answer[i] = toupper(answer[i]);
+    }
 
     return answer;
 }
@@ -178,7 +186,6 @@ int main() {
 
     // Initializing Variables -------------------------------
     int t = 0;
-    int position;
     char guess;
     char *answer = grabTextAnswer();
     int wordCount = strlen(answer);
@@ -187,13 +194,14 @@ int main() {
     bool playing = true;
     bool gameResult = false;
     bool guessed[26] = {false}; // Track guessed letters
+    bool positions[wordCount]; // Track positions of correctly guessed letters
     // ------------------------------------------------------
 
     // fill userAnswer (block of memory) with '_' to 
     memset(userAnswer, '_', wordCount);
+    memset(positions, false, wordCount); // Initialize positions array
 
     // mark where string length ends in memory; null terminator '\0'
-    // the ending is the length of the answer text
     userAnswer[wordCount] = '\0';
 
     greetingMsg();
@@ -210,33 +218,33 @@ int main() {
 
         printf("\nCalculating if your guess was correct ...\n\n");
 
-        guessResult = checkGuess(guess, answer, &position);
+        guessResult = checkGuess(guess, answer, positions);
 
         if (guessResult) {
             printf("Woah, CORRECT GUESS!\n\n");
-
         } else {
             printf("Uh oh, INCORRECT GUESS.\n\n");
         }
 
         // Mark the letter as guessed
-        guessed[guess - 'A'] = true;
+        guessed[guess - 'A'] = true; // A = 65, Z = 90, difference finds alphabet corresponding index 
 
         printf("Printing the updated game board ... \n\n");
 
         if (!guessResult) { // incorrect guess
             t++;
             printHangman(t);
-            printf("Mystery Word => ");
-            printf("%s\n", userAnswer);
-
         } else {    // correct guess
-            userAnswer[position] = guess;
+            for (int i = 0; i < wordCount; i++) {
+                if (positions[i]) {
+                    userAnswer[i] = answer[i];
+                }
+            }
             printHangman(t);
-            printf("Mystery Word => ");
-            printf("%s\n", userAnswer);
         }
 
+        printf("Mystery Word => ");
+        printf("%s\n", userAnswer);
         printAlphabet(guessed);
 
         if (t == 6 || strcmp(userAnswer, answer) == 0) {
