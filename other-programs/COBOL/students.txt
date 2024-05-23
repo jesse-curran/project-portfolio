@@ -1,3 +1,0 @@
-00001John Doe                       85
-00002Jane Smith                     90
-00003Alice Johnson                  78

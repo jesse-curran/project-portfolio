@@ -2,13 +2,6 @@ require_relative "element"
 require_relative "player"
 require_relative "history"
 
-#########################################
-#  CS 381 - Programming Lab #3		    #
-#										#
-#  Jesse Curran				 	        #
-#  curranje@oregonstate.edu	            #
-#										#
-#########################################
 def player_select
     """
     This method displays a lot of beginner game stuff and grabs input for
@@ -34,7 +27,7 @@ def player_select
     end
     player_1_int = player_1_str.to_i
     player_2_int = player_2_str.to_i
-    
+
     player_options = [StupidBot, RandomBot, IterativeBot, LastPlayBot, Human]
     player_1_name = player_options[player_1_int -1].to_s
     player_2_name = player_options[player_2_int -1].to_s
