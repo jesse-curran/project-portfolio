@@ -1,0 +1,16 @@
+function main(workbook: ExcelScript.Workbook) {
+
+    // grab driver tagging tab
+    let driverTaggingTab = workbook.getWorksheet("3. Driver Tagging");
+  
+    // variable for active sheet
+    let maintenanceTab = workbook.getWorksheet("5. Maintenance")
+  
+    // navigate to cell to paste values: col A range edge + down + one
+    let pasteCell = driverTaggingTab.getRange("A7").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(1, 0);
+  
+    // copy values from Maintenance usedRange to Driver Tagging pasteCell col A
+    pasteCell.copyFrom(maintenanceTab.getRange("F10").getExtendedRange(ExcelScript.KeyboardDirection.down),ExcelScript.RangeCopyType.values, false, false);
+  
+  }
+  
