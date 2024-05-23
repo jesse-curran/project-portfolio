@@ -1,5 +1,4 @@
 /* Royal Family of England 1760-now */
-/* Version 2021-1.1.0               */
 
 male('King George III').
 male('King George IV').
