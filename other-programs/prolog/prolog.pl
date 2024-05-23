@@ -1,9 +1,6 @@
 % load family tree
 :- consult('royal.pl').
 
-% enables piping in tests
-portray(Term) :- atom(Term), format("~s", Term).
-
 % --------- Parents ------------------
 
 % MOTHER: Female parent of child.
@@ -126,7 +123,6 @@ ancestor(Ancestor, Descendant) :-
     parent(Parent, Descendant), 
     ancestor(Ancestor, Parent).
 
-
 % DESCENDANT (RECURSIVE): Defines a descendant-descendant relation.
 % Base Case
 descendant(Descendant, Ancestor) :- 
@@ -160,8 +156,7 @@ regentWhenBorn(X, Y) :-
     Birth < End,
     Birth >= Start.
     
-
-% --- Extra Credit --- First Cousin ------------------
+% --- First Cousin ------------------
 
 % FIRST COUSIN
 % Defines first cousin relation.
