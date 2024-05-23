@@ -3,7 +3,6 @@ import pandas as pd
 import datetime
 
 
-
 def get_macro_data():
 
     today = datetime.date.today()
