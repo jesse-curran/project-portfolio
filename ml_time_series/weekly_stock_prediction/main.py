@@ -13,14 +13,16 @@ def main():
     API_KEY = '8HXNN2FZ1WX5CDIZ'
     STOCK_SYMBOL = 'AAPL'
     LAST_N_WEEKS = 3
-
+    """
+    # Commenting out to limit freqency. API call limits.
     # Step 1: Fetch weekly data
     print("Fetching weekly data...")
     weekly_data = fetch_data(STOCK_SYMBOL, API_KEY, LAST_N_WEEKS)
     weekly_data.to_csv('weekly_stock_data.csv')
     print("Weekly data fetched and saved to weekly_stock_data.csv")
     time.sleep(0.5)
-
+    """
+    
     # Step 2: Train the linear regression model (assuming train_model handles data loading internally)
     print("Training linear regression model...")
     train_model()

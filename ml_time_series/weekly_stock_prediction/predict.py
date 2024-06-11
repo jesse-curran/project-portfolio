@@ -53,11 +53,10 @@ def main():
 
     model = load_model('stock_price_model.pkl')
     
-    # Fetch the last three weeks of data and the previous closing price
-    STOCK_SYMBOL = 'AAPL'
-    API_KEY = 'L3W6N203NC5X6TAT'
-    LAST_N_WEEKS = 3
-    new_data_df = fetch_data(STOCK_SYMBOL, API_KEY, LAST_N_WEEKS)
+    # Load the CSV data and select the last 3 rows (last 3 weeks)
+    csv_file_path = 'weekly_stock_data_52.csv'
+    data_df = pd.read_csv(csv_file_path)
+    new_data_df = data_df.iloc[-3:].copy()
     
     # Previous closing price (before the new data)
     previous_close = new_data_df.iloc[0]['Close']
@@ -79,3 +78,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+

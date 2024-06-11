@@ -16,7 +16,7 @@ def fetch_data(symbol, api_key, last_n_weeks=None):
     # Define the Alpha Vantage API endpoint and parameters
     api_url = 'https://www.alphavantage.co/query'
     params = {
-        'function': 'TIME_SERIES_WEEKLY',
+        'function': 'TIME_SERIES_WEEKLY_ADJUSTED',
         'symbol': symbol,
         'apikey': api_key
     }
@@ -26,11 +26,11 @@ def fetch_data(symbol, api_key, last_n_weeks=None):
     data = response.json()
 
     # Check if the data contains the 'Weekly Time Series' key
-    if 'Weekly Time Series' not in data:
+    if 'Weekly Adjusted Time Series' not in data:
         raise ValueError("Error fetching data. Check the API key and symbol.")
 
     # Extract weekly time series data
-    weekly_data = data.get('Weekly Time Series', {})
+    weekly_data = data.get('Weekly Adjusted Time Series', {})
 
     # Convert the weekly data to a pandas DataFrame
     df = pd.DataFrame.from_dict(weekly_data, orient='index')
@@ -55,12 +55,13 @@ def fetch_data(symbol, api_key, last_n_weeks=None):
 if __name__ == "__main__":
     API_KEY = 'L3W6N203NC5X6TAT'
     STOCK_SYMBOL = 'AAPL'
+    LAST_N_WEEKS = 522  # 10 years of weekly data
 
     # Fetch data using the fetch_data function
-    stock_data_df = fetch_data(STOCK_SYMBOL, API_KEY, None)
+    stock_data_df = fetch_data(STOCK_SYMBOL, API_KEY, LAST_N_WEEKS)
 
     # Save the DataFrame to a CSV file (optional)
-    stock_data_df.to_csv('weekly_stock_data.csv')
+    stock_data_df.to_csv('weekly_stock_data_52.csv')
     
     # Print the DataFrame for debugging purposes
     print(stock_data_df.head())
