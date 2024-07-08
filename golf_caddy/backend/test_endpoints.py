@@ -15,9 +15,13 @@ def test_home():
 def test_save_pre_round_info():
     data = {
         "user_id": "user123",
-        "course": "Pebble Beach",
-        "tee_time": "08:00",
-        "weather": "Sunny"
+        "player_name": "John Doe",
+        "handicap": 12,
+        "club_distances": {
+            "driver": 240,
+            "iron_7": 150
+        },
+        "characteristics": "steady"
     }
     response = requests.post(f"{BASE_URL}/save_pre_round_info", json=data)
     print("Save Pre-round Info Endpoint Status Code:", response.status_code)

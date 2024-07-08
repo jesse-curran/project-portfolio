@@ -1,24 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
-function Home() {
-  return (
-    <div>
-      <h1>Welcome to the Golf Caddy App</h1>
-    </div>
-  );
-}
+import Home from './Home';
+import ChatbotInterface from './ChatbotInterface';
 
 function App() {
-  return (
-    <Router>
-      <div>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </div>
-    </Router>
-  );
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/chat" element={<ChatbotInterface />} />
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;
