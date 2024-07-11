@@ -2,6 +2,11 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from openai import OpenAI
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
@@ -11,7 +16,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///golf_caddy.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-client = OpenAI(api_key='sk-proj-1Zatllzfe1VSwU0JGSKbT3BlbkFJ9KofsMF67lK3bHqn8vj0')
+Personal_Api_Key = os.getenv('OPENAI_API_KEY')
+client = OpenAI(api_key=Personal_Api_Key)
 
 # Database models
 class PreRoundInfo(db.Model):
