@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Login() {
+function Login({ setLoading, setError }) {
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
     const [registerUsername, setRegisterUsername] = useState('');
@@ -10,8 +10,10 @@ function Login() {
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
-    const handleLogin = async (e) => {
+    const handleLogin = useCallback(async (e) => {
         e.preventDefault();
+        setLoading(true);
+        setError(null);
         try {
             const response = await fetch('http://localhost:3000/api/auth/login', {
                 method: 'POST',
@@ -24,15 +26,19 @@ function Login() {
                 setMessage('Login successful!');
                 navigate('/courses');
             } else {
-                setMessage('Login failed: ' + data.message);
+                setError('Login failed: ' + data.message);
             }
         } catch (error) {
-            setMessage('Login error: ' + error.message);
+            setError('Login error: ' + error.message);
+        } finally {
+            setLoading(false);
         }
-    };
+    }, [loginEmail, loginPassword, setLoading, setError, navigate]);
 
-    const handleRegister = async (e) => {
+    const handleRegister = useCallback(async (e) => {
         e.preventDefault();
+        setLoading(true);
+        setError(null);
         try {
             const response = await fetch('http://localhost:3000/api/auth/register', {
                 method: 'POST',
@@ -43,22 +49,28 @@ function Login() {
             if (response.ok) {
                 setMessage('Registration successful! Please log in.');
             } else {
-                setMessage('Registration failed: ' + data.message);
+                setError('Registration failed: ' + data.message);
             }
         } catch (error) {
-            setMessage('Registration error: ' + error.message);
+            setError('Registration error: ' + error.message);
+        } finally {
+            setLoading(false);
         }
-    };
+    }, [registerUsername, registerEmail, registerPassword, setLoading, setError]);
 
-    const testBackendConnection = async () => {
+    const testBackendConnection = useCallback(async () => {
+        setLoading(true);
+        setError(null);
         try {
             const response = await fetch('http://localhost:3000/');
             const data = await response.text();
             setMessage('Backend connection successful: ' + data);
         } catch (error) {
-            setMessage('Backend connection failed: ' + error.message);
+            setError('Backend connection failed: ' + error.message);
+        } finally {
+            setLoading(false);
         }
-    };
+    }, [setLoading, setError]);
 
     return (
         <div>

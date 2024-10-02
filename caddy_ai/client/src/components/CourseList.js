@@ -1,17 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function CourseList() {
+function CourseList({ setLoading, setError }) {
     const [courses, setCourses] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        fetchCourses();
-    }, []);
-
-    const fetchCourses = async () => {
+    const fetchCourses = useCallback(async () => {
+        setLoading(true);
+        setError(null);
         try {
             const token = localStorage.getItem('token');
             const response = await fetch('http://localhost:3000/api/courses', {
@@ -24,30 +20,25 @@ function CourseList() {
             }
             const data = await response.json();
             setCourses(data);
-            setLoading(false);
         } catch (error) {
             setError(error.message);
+        } finally {
             setLoading(false);
         }
-    };
+    }, [setLoading, setError]);
 
-    const handleCourseSelect = (courseId) => {
-        // Navigate to the round tracking page with the selected course ID
+    useEffect(() => {
+        fetchCourses();
+    }, [fetchCourses]);
+
+    const handleCourseSelect = useCallback((courseId) => {
         navigate(`/round/${courseId}`);
-    };
+    }, [navigate]);
 
-    const handleLogout = () => {
+    const handleLogout = useCallback(() => {
         localStorage.removeItem('token');
         navigate('/');
-    };
-
-    if (loading) {
-        return <div>Loading courses...</div>;
-    }
-
-    if (error) {
-        return <div>Error: {error}</div>;
-    }
+    }, [navigate]);
 
     return (
         <div>
