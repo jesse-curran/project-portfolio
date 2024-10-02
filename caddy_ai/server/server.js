@@ -19,6 +19,9 @@ app.use((req, res, next) => {
   next();
 });
 
+const cors = require('cors');
+app.use(cors());
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/courses', courseRoutes);
