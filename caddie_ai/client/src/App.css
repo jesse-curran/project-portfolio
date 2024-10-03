@@ -1,0 +1,23 @@
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  z-index: 1000;
+}
+
+.error-message {
+  background-color: #ffcccc;
+  color: #cc0000;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #cc0000;
+  border-radius: 4px;
+}
