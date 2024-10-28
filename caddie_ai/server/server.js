@@ -42,13 +42,18 @@ app.get('/', (req, res) => {
 // AI Caddy Advice route
 app.post('/api/caddy-advice', async (req, res) => {
   try {
-    const { holeNumber, distance, weather } = req.body;
-    const userMessage = `I'm on hole ${holeNumber}, ${distance} yards from the pin, and the weather is ${weather}. What's your advice?`;
+    const { holeNumber, shotNumber, distance, lieType, wind, par, handicap } = req.body;
+    const userMessage = `I'm on hole ${holeNumber}, shot ${shotNumber}, ${distance} yards from the pin. 
+      The ball's lie type is ${lieType} with ${wind} wind conditions. 
+      This is a par ${par} hole. What's your advice?`;
 
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [
-        { role: "system", content: "You are an expert golf caddy AI assistant. Provide concise, helpful advice for golfers based on their current golf shot." },
+        { 
+          role: "system", 
+          content: "You are an expert golf caddy AI assistant. Provide concise, helpful advice for golfers based on their current golf shot situation." 
+        },
         { role: "user", content: userMessage }
       ],
     });

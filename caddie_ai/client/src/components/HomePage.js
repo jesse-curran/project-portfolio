@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import RoundPage from './RoundPage';
 
 const HomePage = () => {
   // Authentication states
@@ -8,7 +9,8 @@ const HomePage = () => {
   const [registerUsername, setRegisterUsername] = useState('');
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
-  
+  const [showRound, setShowRound] = useState(false);
+
   // Profile states
   const [clubs, setClubs] = useState([{ id: 1, name: '', distance: '' }]);
   const [handicap, setHandicap] = useState('');
@@ -231,14 +233,13 @@ const HomePage = () => {
     }
   };
 
-  const handleStartRound = () => {
+    const handleStartRound = () => {
     if (!selectedCourse) {
-      setError('Please select a course first');
-      return;
+        setError('Please select a course first');
+        return;
     }
-    // TODO: Navigate to round page or start round
-    setMessage('Starting round...');
-  };
+    setShowRound(true);
+    };
 
   // Styles
   const styles = {
@@ -360,6 +361,11 @@ const HomePage = () => {
             <button type="submit" style={styles.button}>Register</button>
           </form>
         </div>
+      ) : showRound ? (
+        <RoundPage 
+          selectedCourseId={selectedCourse}
+          onExit={() => setShowRound(false)}
+        />
       ) : (
         <>
           <div style={styles.section}>
