@@ -1,43 +1,59 @@
 import React, { useState, useEffect } from 'react';
 
-const RoundPage = ({ selectedCourseId }) => {
+const RoundPage = ({ selectedCourseId, onExit }) => {
   // State for course and hole information
   const [course, setCourse] = useState(null);
   const [currentHoleIndex, setCurrentHoleIndex] = useState(0);
+  const [userProfile, setUserProfile] = useState(null);
   
-  // State for shot input
+  // Enhanced shot input state
   const [shotNumber, setShotNumber] = useState(1);
   const [shotDistance, setShotDistance] = useState('');
-  const [lieType, setLieType] = useState('fairway'); // default lie type
-  const [wind, setWind] = useState('none'); // default wind condition
+  const [lieType, setLieType] = useState('fairway');
+  const [lieAngle, setLieAngle] = useState('flat');
+  const [windSpeed, setWindSpeed] = useState('0');
+  const [windDirection, setWindDirection] = useState('none');
   
   // State for AI response
   const [caddieResponse, setCaddieResponse] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // Fetch course details on component mount
+  // Fetch user profile and course details on component mount
   useEffect(() => {
-    const fetchCourseDetails = async () => {
+    const fetchInitialData = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:3000/api/courses/${selectedCourseId}`, {
+        
+        // Fetch user profile
+        const profileResponse = await fetch('http://localhost:3000/api/profile', {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
           }
         });
         
-        if (!response.ok) throw new Error('Failed to fetch course details');
+        if (!profileResponse.ok) throw new Error('Failed to fetch user profile');
+        const profileData = await profileResponse.json();
+        setUserProfile(profileData);
+
+        // Fetch course details
+        const courseResponse = await fetch(`http://localhost:3000/api/courses/${selectedCourseId}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
         
-        const data = await response.json();
-        setCourse(data);
+        if (!courseResponse.ok) throw new Error('Failed to fetch course details');
+        const courseData = await courseResponse.json();
+        setCourse(courseData);
       } catch (error) {
-        setError('Failed to load course details');
+        setError('Failed to load initial data: ' + error.message);
       }
     };
 
-    fetchCourseDetails();
+    fetchInitialData();
   }, [selectedCourseId]);
 
   const handlePreviousHole = () => {
@@ -56,6 +72,16 @@ const RoundPage = ({ selectedCourseId }) => {
     }
   };
 
+  const getRecommendedClub = (distance) => {
+    if (!userProfile?.clubs || userProfile.clubs.length === 0) return null;
+    
+    // Sort clubs by distance
+    const sortedClubs = [...userProfile.clubs].sort((a, b) => b.distance - a.distance);
+    
+    // Find the first club that can reach the distance
+    return sortedClubs.find(club => club.distance >= distance) || sortedClubs[0];
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -63,6 +89,9 @@ const RoundPage = ({ selectedCourseId }) => {
 
     try {
       const token = localStorage.getItem('token');
+      const currentHole = course.holes[currentHoleIndex];
+      const recommendedClub = getRecommendedClub(parseInt(shotDistance));
+
       const response = await fetch('http://localhost:3000/api/caddy-advice', {
         method: 'POST',
         headers: {
@@ -74,9 +103,15 @@ const RoundPage = ({ selectedCourseId }) => {
           shotNumber,
           distance: shotDistance,
           lieType,
-          wind,
-          par: course?.holes[currentHoleIndex]?.par,
-          handicap: course?.holes[currentHoleIndex]?.handicap
+          lieAngle,
+          windSpeed,
+          windDirection,
+          par: currentHole.par,
+          handicap: userProfile.handicap,
+          holeDistance: currentHole.distance,
+          holeDescription: currentHole.description,
+          recommendedClub: recommendedClub ? recommendedClub.name : null,
+          userClubs: userProfile.clubs
         })
       });
 
@@ -84,85 +119,30 @@ const RoundPage = ({ selectedCourseId }) => {
 
       const data = await response.json();
       setCaddieResponse(data.advice);
-      setShotNumber(shotNumber + 1);
     } catch (error) {
-      setError('Failed to get caddie advice');
+      setError('Failed to get caddie advice: ' + error.message);
     } finally {
       setIsLoading(false);
     }
   };
 
   const styles = {
-    container: {
-      maxWidth: '800px',
-      margin: '0 auto',
-      padding: '20px',
-    },
-    header: {
-      textAlign: 'center',
-      marginBottom: '20px',
-    },
-    navigation: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      marginBottom: '20px',
-    },
-    form: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '15px',
-      marginBottom: '20px',
-      padding: '20px',
-      border: '1px solid #ccc',
+    // ... (keeping existing styles) ...
+    holeInfo: {
+      backgroundColor: '#f8f9fa',
+      padding: '15px',
       borderRadius: '5px',
+      marginBottom: '20px',
     },
-    formGroup: {
-      display: 'flex',
-      alignItems: 'center',
+    gridContainer: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(2, 1fr)',
       gap: '10px',
-    },
-    label: {
-      minWidth: '120px',
-      fontWeight: 'bold',
-    },
-    input: {
-      padding: '8px',
-      borderRadius: '4px',
-      border: '1px solid #ccc',
-      flex: 1,
-    },
-    select: {
-      padding: '8px',
-      borderRadius: '4px',
-      border: '1px solid #ccc',
-      flex: 1,
-    },
-    button: {
-      padding: '10px 20px',
-      backgroundColor: '#4CAF50',
-      color: 'white',
-      border: 'none',
-      borderRadius: '4px',
-      cursor: 'pointer',
-    },
-    disabledButton: {
-      backgroundColor: '#cccccc',
-      cursor: 'not-allowed',
-    },
-    response: {
-      marginTop: '20px',
-      padding: '20px',
-      backgroundColor: '#f5f5f5',
-      borderRadius: '4px',
-      fontSize: '18px',
-    },
-    error: {
-      color: 'red',
-      marginBottom: '10px',
+      marginBottom: '15px',
     }
   };
 
-  if (!course) return <div style={styles.container}>Loading course...</div>;
+  if (!course || !userProfile) return <div style={styles.container}>Loading...</div>;
 
   const currentHole = course.holes[currentHoleIndex];
 
@@ -170,7 +150,12 @@ const RoundPage = ({ selectedCourseId }) => {
     <div style={styles.container}>
       <div style={styles.header}>
         <h1>{course.name}</h1>
-        <h2>Hole {currentHoleIndex + 1} - Par {currentHole.par}</h2>
+        <div style={styles.holeInfo}>
+          <h2>Hole {currentHoleIndex + 1} - Par {currentHole.par}</h2>
+          <p>Distance: {currentHole.distance} yards</p>
+          <p>Description: {currentHole.description || 'No description available'}</p>
+          <p>Your Handicap: {userProfile.handicap}</p>
+        </div>
       </div>
 
       <div style={styles.navigation}>
@@ -197,55 +182,88 @@ const RoundPage = ({ selectedCourseId }) => {
       </div>
 
       <form onSubmit={handleSubmit} style={styles.form}>
-        <div style={styles.formGroup}>
-          <label style={styles.label}>Shot Number:</label>
-          <input
-            type="number"
-            value={shotNumber}
-            readOnly
-            style={styles.input}
-          />
-        </div>
+        <div style={styles.gridContainer}>
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Shot Number:</label>
+            <input
+              type="number"
+              value={shotNumber}
+              onChange={(e) => setShotNumber(Math.max(1, parseInt(e.target.value) || 1))}
+              min="1"
+              style={styles.input}
+            />
+          </div>
 
-        <div style={styles.formGroup}>
-          <label style={styles.label}>Shot Distance:</label>
-          <input
-            type="number"
-            value={shotDistance}
-            onChange={(e) => setShotDistance(e.target.value)}
-            required
-            placeholder="Distance in yards"
-            style={styles.input}
-          />
-        </div>
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Shot Distance:</label>
+            <input
+              type="number"
+              value={shotDistance}
+              onChange={(e) => setShotDistance(e.target.value)}
+              required
+              placeholder="Distance in yards"
+              style={styles.input}
+            />
+          </div>
 
-        <div style={styles.formGroup}>
-          <label style={styles.label}>Lie Type:</label>
-          <select 
-            value={lieType}
-            onChange={(e) => setLieType(e.target.value)}
-            style={styles.select}
-          >
-            <option value="tee">Tee</option>
-            <option value="fairway">Fairway</option>
-            <option value="rough">Rough</option>
-            <option value="sand">Sand</option>
-            <option value="green">Green</option>
-          </select>
-        </div>
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Lie Type:</label>
+            <select 
+              value={lieType}
+              onChange={(e) => setLieType(e.target.value)}
+              style={styles.select}
+            >
+              <option value="tee">Tee</option>
+              <option value="fairway">Fairway</option>
+              <option value="rough">Rough</option>
+              <option value="sand">Sand</option>
+              <option value="green">Green</option>
+            </select>
+          </div>
 
-        <div style={styles.formGroup}>
-          <label style={styles.label}>Wind:</label>
-          <select 
-            value={wind}
-            onChange={(e) => setWind(e.target.value)}
-            style={styles.select}
-          >
-            <option value="none">No Wind</option>
-            <option value="light">Light Wind</option>
-            <option value="moderate">Moderate Wind</option>
-            <option value="strong">Strong Wind</option>
-          </select>
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Lie Angle:</label>
+            <select 
+              value={lieAngle}
+              onChange={(e) => setLieAngle(e.target.value)}
+              style={styles.select}
+            >
+              <option value="flat">Flat</option>
+              <option value="uphill">Uphill</option>
+              <option value="downhill">Downhill</option>
+              <option value="left-to-right">Left to Right</option>
+              <option value="right-to-left">Right to Left</option>
+            </select>
+          </div>
+
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Wind Speed:</label>
+            <select 
+                value={windSpeed}
+                onChange={(e) => setWindSpeed(e.target.value)}
+                style={styles.select}
+            >
+                <option value="none">None</option>
+                <option value="light">Light</option>
+                <option value="moderate">Moderate</option>
+                <option value="high">High</option>
+            </select>
+          </div>
+
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Wind Direction:</label>
+            <select 
+              value={windDirection}
+              onChange={(e) => setWindDirection(e.target.value)}
+              style={styles.select}
+            >
+              <option value="none">No Wind</option>
+              <option value="headwind">Headwind</option>
+              <option value="tailwind">Tailwind</option>
+              <option value="left-to-right">Left to Right</option>
+              <option value="right-to-left">Right to Left</option>
+            </select>
+          </div>
         </div>
 
         <button 
@@ -265,6 +283,13 @@ const RoundPage = ({ selectedCourseId }) => {
           <p>{caddieResponse}</p>
         </div>
       )}
+
+      <button 
+        onClick={onExit} 
+        style={{...styles.button, backgroundColor: '#666', marginTop: '20px'}}
+      >
+        Exit Round
+      </button>
     </div>
   );
 };

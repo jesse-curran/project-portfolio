@@ -42,17 +42,49 @@ app.get('/', (req, res) => {
 // AI Caddy Advice route
 app.post('/api/caddy-advice', async (req, res) => {
   try {
-    const { holeNumber, shotNumber, distance, lieType, wind, par, handicap } = req.body;
-    const userMessage = `I'm on hole ${holeNumber}, shot ${shotNumber}, ${distance} yards from the pin. 
-      The ball's lie type is ${lieType} with ${wind} wind conditions. 
-      This is a par ${par} hole. What's your advice?`;
+    const {
+      holeNumber,
+      shotNumber,
+      distance,
+      lieType,
+      lieAngle,
+      windSpeed,
+      windDirection,
+      par,
+      handicap,
+      holeDistance,
+      holeDescription,
+      recommendedClub,
+      userClubs
+    } = req.body;
+    //The calculated recommendedClub by sorting my club distances is ${recommendedClub}.
+    // Format clubs list for the prompt
+    const clubsList = userClubs
+      .map(club => `${club.name}: ${club.distance} yards`)
+      .join('\n');
+
+    const userMessage = `
+      I'm on hole ${holeNumber} (${holeDistance} yards, par ${par}), shot ${shotNumber}.
+      ${holeDescription ? `Hole description: ${holeDescription}` : ''}
+      I'm ${distance} yards from the pin.
+      The ball is on the ${lieType} with a ${lieAngle} lie.
+      Wind conditions: ${windSpeed} mph ${windDirection}.
+      My handicap is ${handicap}.
+      My available clubs and their distances are: ${clubsList}.
+      
+
+      The main question to answer in your response: 
+      Based on the clubs in my bag and each of their distances, what shot should I try to hit given my distance, shot number, lie type and lie angle, wind conditions, and my handicap?
+      
+      Example Response, follow this outline closely. Notice example is robot like, concise: Factoring in golf shot variables, my recommendation is a 7 iron at about 80%. From 156 yards out, with wind light and in your face, and the lie preferrable on the fairway, your normal 7 iron distance of 165 swung at 80% should give you the correct distance, lower flight and spin, with exactly what we want. Good luck you got this!
+    `;
 
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [
         { 
           role: "system", 
-          content: "You are an expert golf caddy AI assistant. Provide concise, helpful advice for golfers based on their current golf shot situation." 
+          content: "You are an expert golf caddy AI assistant. Provide specific, actionable advice considering the player's skill level (handicap), their club distances, and current conditions. Be concise but thorough." 
         },
         { role: "user", content: userMessage }
       ],
