@@ -15,7 +15,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  // Add these new fields
   handicap: {
     type: Number,
     min: 0,

@@ -23,7 +23,7 @@ exports.register = async (req, res) => {
 
     const payload = { user: { id: user.id } };
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
-    
+
     console.log('Generated token:', token); // Debug log
     console.log('Payload:', payload); // Debug log
 
