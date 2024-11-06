@@ -11,5 +11,5 @@ In addition, I have more fun projects not on my resume within this repo:
 
 
 4) Wordle Hangman in C
-5) Economic Indicators Web App using Python, Flask, and Fred API
+5) Economic Indicators Web App using Python, Flask, and FRED API
 
