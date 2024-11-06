@@ -1,7 +1,7 @@
 Welcome to my project portfolio!
 
 
-As seen on my resume you can find my main three public projects here:
+As seen on my resume you can find my three public projects here:
 1) Caddie AI
 2) Time Series Forecast
 3) Finance Automation
