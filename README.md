@@ -60,7 +60,8 @@ A classic Hangman game implemented in **C**, using the entire Wordle database. T
 
 ## Resume
 
-[**View My Resume**](#) <!-- Link to your resume if available -->
+[**View My Resume**](https://github.com/user-attachments/files/17926085/resume_jessecurran.pdf)
+
 
 ---
 
