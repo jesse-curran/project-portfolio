@@ -24,8 +24,10 @@ Details: Prophet Model utilizing dynamic object oriented design with hyper param
 
 
 Macroeconomic Indicators using Federal Reserve Economic Data (FRED API)
+![navigation](https://github.com/user-attachments/assets/11073481-dd06-4b8b-ae03-b2f19f7ecc1c)
 
-[insert GIF]
+![data_retrieval](https://github.com/user-attachments/assets/4e18a688-c4d8-4f9d-a6ac-59f696aadb48)
+
 
 Wordle Hangman in C, uses the entire Wordle database, can you survive?
 
