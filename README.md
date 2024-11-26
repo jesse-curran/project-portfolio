@@ -17,6 +17,8 @@ Time Series Forecast on Adjusted Admissions - by Region using Prophet Model
 
 
 Details: Prophet Model utilizing dynamic object oriented design with hyper parameter tuning using param grid iteration. Built across 7 regions with different model parameters all optimized to predict adjusted admissions. Through this prediction a financial forecast was developed. Graph below is test results from model performance.
+
+
 ![output](https://github.com/user-attachments/assets/d0c35902-132c-474b-b289-00c333f8ba5a)
 
 
