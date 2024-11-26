@@ -1,16 +1,10 @@
-The goal of this caddie ai project is to create an ai assistant at your fingertips on the golf course in web app format.
-
-
-Imagine being able get advice on your toughest golf shots with a virtual caddie...
+An AI Assistant at your fingertips on the golf course!
 
 
 Club selection, swing thoughts, adjustments for wind, lie angle and lie type. 
 
 
-Future developments to features: gps, EQ personalization, and post round analytics dashboard.
-
-
-Below are visualized features in the following order: registration, login, profile update, course selection, caddie advice.
+Features: registration, login, profile update, course selection, caddie advice.
 
 
 REGISTRATION
@@ -22,4 +16,7 @@ PROFILE UPDATE
 COURSE SELECTION
 
 AI CADDIE ADIVCE
+
+
+Future developments to features: gps, EQ personalization, and post round analytics dashboard.
 
