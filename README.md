@@ -1,43 +1,71 @@
-Hello! 👋 I'm Jesse Curran, welcome to my project portfolio!
+# Jesse Curran's Project Portfolio
 
+Hello! 👋 I'm **Jesse Curran**—welcome to my project portfolio!
 
-Below are some sample views of my projects and my resume:
+Below you'll find samples of my projects along with brief descriptions and visuals. Click on the project titles to explore more.
 
+---
 
-Caddie AI Web App, kinda cool?!
+## Table of Contents
 
+- [Projects](#projects)
+  - [Caddie AI Web App](#caddie-ai-web-app)
+  - [Time Series Forecast on Adjusted Admissions](#time-series-forecast-on-adjusted-admissions)
+  - [Macroeconomic Indicators using FRED API](#macroeconomic-indicators-using-fred-api)
+  - [Wordle Hangman in C](#wordle-hangman-in-c)
+- [Resume](#resume)
 
-![caddie_advice](https://github.com/user-attachments/assets/d73e56f0-63ab-452b-85db-552413a6d115)
+---
 
+## Projects
 
-Want to see more on this project like login authentication, profile CRUD and course selection? Click [HERE](https://github.com/jesse-curran/my-programs/tree/main/caddie_ai) !
+### Caddie AI Web App
 
+[**View Project Repository**](https://github.com/jesse-curran/my-programs/tree/main/caddie_ai)
 
-Time Series Forecast on Adjusted Admissions - by Region using Prophet Model
+![Caddie AI Advice](https://github.com/user-attachments/assets/d73e56f0-63ab-452b-85db-552413a6d115)
 
+An innovative web application that provides personalized caddie advice for golfers. Features include:
 
-Details: Prophet Model utilizing dynamic object oriented design with hyper parameter tuning using param grid iteration. Built across 7 regions with different model parameters all optimized to predict adjusted admissions. Through this prediction a financial forecast was developed. Graph below is test results from model performance.
+- **Login Authentication**
+- **Profile CRUD Operations**
+- **Course Selection**
+- **Caddie Advice**
 
+---
 
-![output](https://github.com/user-attachments/assets/d0c35902-132c-474b-b289-00c333f8ba5a)
+### Time Series Forecast on Adjusted Admissions
 
+![Prophet Model Output](https://github.com/user-attachments/assets/d0c35902-132c-474b-b289-00c333f8ba5a)
 
+Developed a series of **Prophet Models** utilizing dynamic object-oriented design with hyperparameter tuning through parameter grid iteration. Built across **7 regions** with optimized model parameters to predict adjusted admissions. This model aids in developing a financial forecast. The graph above showcases test results from the model's performance.
 
-Macroeconomic Indicators using Federal Reserve Economic Data (FRED API)
+---
 
+### Macroeconomic Indicators using FRED API
 
-![data_retrieval](https://github.com/user-attachments/assets/4e18a688-c4d8-4f9d-a6ac-59f696aadb48)
+![Data Retrieval from FRED API](https://github.com/user-attachments/assets/4e18a688-c4d8-4f9d-a6ac-59f696aadb48)
 
+A project that interfaces with the Federal Reserve Economic Data (FRED) API to retrieve and analyze macroeconomic indicators, working as a shortcut for data retrieval and analysis. This tool helps in visualizing economic trends and patterns.
 
-Wordle Hangman in C, uses the entire Wordle database, can you survive?
+---
 
+### Wordle Hangman in C
 
-![wordle_hangman](https://github.com/user-attachments/assets/c6de6182-e6d0-4b07-b303-7e5edcbba184)
+![Wordle Hangman](https://github.com/user-attachments/assets/c6de6182-e6d0-4b07-b303-7e5edcbba184)
 
+A classic Hangman game implemented in **C**, using the entire Wordle database. Test your vocabulary and survival skills—can you guess the word before it's too late?
 
+---
 
+## Resume
 
-Finance Automation, a non-confidential example
+[**View My Resume**](#) <!-- Link to your resume if available -->
 
-[insert GIF]
+---
 
+*Thank you for visiting my portfolio! Feel free to explore the projects and reach out if you'd like to collaborate or have any questions.*
+
+---
+
+**Note:** This README is a reflection of my ongoing work and will be updated regularly with new projects and enhancements.
