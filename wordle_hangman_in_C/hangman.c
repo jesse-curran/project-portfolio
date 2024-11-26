@@ -8,7 +8,7 @@
 /* INSTRUCTIONS:
     Go into your terminal.
     Have a C compiler installed.
-    e.g. run clang -o hangman_exe new_hangman.c  
+    e.g. run clang -o hangman_exe hangman.c  
     then run ./hangman_exe
     play the game
     voila          
