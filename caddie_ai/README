@@ -8,6 +8,7 @@ Features: registration, login, profile update, course selection, caddie advice.
 
 
 REGISTRATION
+![alt text](../assets/caddie_ai/register.gif)
 
 LOGIN
 
@@ -16,7 +17,7 @@ PROFILE UPDATE
 COURSE SELECTION
 
 AI CADDIE ADIVCE
-
+![alt text](../assets/caddie_ai/caddie_advice.gif)
 
 Future developments to features: gps, EQ personalization, and post round analytics dashboard.
 
