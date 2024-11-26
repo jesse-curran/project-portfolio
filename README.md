@@ -10,4 +10,3 @@ Here is a sample below from my Caddie AI Web App, kinda cool?!
 
 
 Want to see more on this project like login authentication, profile CRUD and course selection? Click [HERE](https://github.com/jesse-curran/my-programs/tree/main/caddie_ai) !
-![login](https://github.com/user-attachments/assets/b9ff4de4-c05f-4c6a-98d0-18f545c395c2)
