@@ -1,4 +1,4 @@
-# Jesse Curran's Project Portfolio
+# Project Portfolio
 
 Hello! 👋 I'm **Jesse Curran**—welcome to my project portfolio!
 
