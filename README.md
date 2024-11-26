@@ -9,3 +9,4 @@ Here is a sample below from my Caddie AI Web App, kinda cool?!
 ![caddie_advice](https://github.com/user-attachments/assets/d73e56f0-63ab-452b-85db-552413a6d115)
 
 
+Want to see more on this project like login authentication, profile CRUD and course selection? Click HERE !
