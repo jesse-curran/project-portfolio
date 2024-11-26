@@ -31,7 +31,10 @@ Macroeconomic Indicators using Federal Reserve Economic Data (FRED API)
 
 Wordle Hangman in C, uses the entire Wordle database, can you survive?
 
-[insert GIF]
+
+![wordle_hangman](https://github.com/user-attachments/assets/c6de6182-e6d0-4b07-b303-7e5edcbba184)
+
+
 
 
 Finance Automation, a non-confidential example
