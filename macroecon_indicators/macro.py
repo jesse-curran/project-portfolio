@@ -20,8 +20,8 @@ def get_macro_data():
     }
 
     # Define the date range for the data
-    start_date = "2021-01-01"
-    end_date = "2021-12-31"
+    start_date = "2023-01-01"
+    end_date = "2023-12-31"
 
     # Fetch the data and store it in a dictionary of DataFrames
     dataframes = {}
@@ -71,13 +71,13 @@ def get_macro_data():
 
     #merged_data.head()
 
-    output_file_csv = '/Users/jessecurran/_PORTFOLIO/my-programs/econ-data-science-app/macro_data.csv'
+    output_file_csv = '/Users/jessecurran/my-programs/macroecon_indicators/macro_data.csv'
     merged_data.to_csv(output_file_csv)
 
-    output_file_excel = '/Users/jessecurran/_PORTFOLIO/my-programs/econ-data-science-app/macro_data.xlsx'
+    output_file_excel = '/Users/jessecurran/my-programs/macroecon_indicators/macro_data.xlsx'
     merged_data.to_excel(output_file_excel)
 
-    output_file_json = '/Users/jessecurran/_PORTFOLIO/my-programs/econ-data-science-app/macro_data.json'
+    output_file_json = '/Users/jessecurran/my-programs/macroecon_indicators/macro_data.json'
     merged_data.to_json(output_file_json)
 
     return 
