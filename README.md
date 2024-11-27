@@ -36,6 +36,8 @@ An innovative web application that provides personalized caddie advice for golfe
 
 ### Time Series Forecast on Adjusted Admissions
 
+[**View Project Repository**](https://github.com/jesse-curran/my-programs/tree/main/machine_learning/time_series_financial_forecast)
+
 ![Prophet Model Output](https://github.com/user-attachments/assets/d0c35902-132c-474b-b289-00c333f8ba5a)
 
 Developed a series of **Prophet Models** utilizing dynamic object-oriented design with hyperparameter tuning through parameter grid iteration. Built across **7 regions** with optimized model parameters to predict adjusted admissions. This model aids in developing a financial forecast. The graph above showcases test results from the model's performance.
@@ -43,6 +45,8 @@ Developed a series of **Prophet Models** utilizing dynamic object-oriented desig
 ---
 
 ### Wordle Hangman in C
+
+[**View Project Repository**](https://github.com/jesse-curran/my-programs/tree/main/wordle_hangman_in_C)
 
 ![Wordle Hangman](https://github.com/user-attachments/assets/c6de6182-e6d0-4b07-b303-7e5edcbba184)
 
@@ -52,6 +56,8 @@ A classic Hangman game implemented in **C**, using the entire Wordle database. T
 
 ### Macroeconomic Indicators using FRED API
 
+[**View Project Repository**](https://github.com/jesse-curran/my-programs/tree/main/macroecon_indicators)
+
 ![Data Retrieval from FRED API](https://github.com/user-attachments/assets/4e18a688-c4d8-4f9d-a6ac-59f696aadb48)
 
 A project that interfaces with the Federal Reserve Economic Data (FRED) API to retrieve and analyze macroeconomic indicators, working as a shortcut for data retrieval and analysis. This tool helps in visualizing economic trends and patterns.
@@ -59,6 +65,8 @@ A project that interfaces with the Federal Reserve Economic Data (FRED) API to r
 ---
 
 ### Finance Automation Example
+
+[**View Project Repository**](https://github.com/jesse-curran/my-programs/tree/main/work_programming/work_programming_scripts.pdf)
 
 ![500 Excel Files Consolidated](https://github.com/user-attachments/assets/04e87f3d-439c-4545-bfcc-2736afe2c814)
 
