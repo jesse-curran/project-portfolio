@@ -1,6 +1,6 @@
-# Project Portfolio
+# Portfolio
 
-Hello! 👋 I'm **Jesse Curran**—welcome to my project portfolio!
+Hello! I'm **Jesse Curran**—welcome to my project portfolio!
 
 Below you'll find samples of my projects along with brief descriptions and visuals. Click on the project titles to explore more.
 
