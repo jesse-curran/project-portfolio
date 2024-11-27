@@ -58,6 +58,15 @@ A classic Hangman game implemented in **C**, using the entire Wordle database. T
 
 ---
 
+### Finance Automation Example
+
+![500 Excel Files Consolidated](https://github.com/user-attachments/assets/04e87f3d-439c-4545-bfcc-2736afe2c814)
+
+
+A simple python program that consolidates data of 500+ excel files, automated with windows task scheduler. This particular process leveraged parallelization and excel reading libraries. Aided in real time data awareness of stakeholders.
+
+---
+
 ## Resume
 
 [**View My Resume**](https://github.com/user-attachments/files/17926085/resume_jessecurran.pdf)
