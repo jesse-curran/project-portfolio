@@ -42,19 +42,19 @@ Developed a series of **Prophet Models** utilizing dynamic object-oriented desig
 
 ---
 
-### Macroeconomic Indicators using FRED API
-
-![Data Retrieval from FRED API](https://github.com/user-attachments/assets/4e18a688-c4d8-4f9d-a6ac-59f696aadb48)
-
-A project that interfaces with the Federal Reserve Economic Data (FRED) API to retrieve and analyze macroeconomic indicators, working as a shortcut for data retrieval and analysis. This tool helps in visualizing economic trends and patterns.
-
----
-
 ### Wordle Hangman in C
 
 ![Wordle Hangman](https://github.com/user-attachments/assets/c6de6182-e6d0-4b07-b303-7e5edcbba184)
 
 A classic Hangman game implemented in **C**, using the entire Wordle database. Test your vocabulary and survival skills—can you guess the word before it's too late?
+
+---
+
+### Macroeconomic Indicators using FRED API
+
+![Data Retrieval from FRED API](https://github.com/user-attachments/assets/4e18a688-c4d8-4f9d-a6ac-59f696aadb48)
+
+A project that interfaces with the Federal Reserve Economic Data (FRED) API to retrieve and analyze macroeconomic indicators, working as a shortcut for data retrieval and analysis. This tool helps in visualizing economic trends and patterns.
 
 ---
 
