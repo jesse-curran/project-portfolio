@@ -13,7 +13,6 @@ Below you'll find samples of my projects along with brief descriptions and visua
   - [Time Series Forecast on Adjusted Admissions](#time-series-forecast-on-adjusted-admissions)
   - [Macroeconomic Indicators using FRED API](#macroeconomic-indicators-using-fred-api)
   - [Wordle Hangman in C](#wordle-hangman-in-c)
-- [Resume](#resume)
 
 ---
 
@@ -72,13 +71,6 @@ A project that interfaces with the Federal Reserve Economic Data (FRED) API to r
 
 
 A simple python program that consolidates data of 500+ excel files, automated with windows task scheduler. This particular process leveraged parallelization and excel reading libraries. Aided in real time data awareness of stakeholders.
-
----
-
-## Resume
-
-[**View My Resume**](https://github.com/user-attachments/files/17926085/resume_jessecurran.pdf)
-
 
 ---
 
