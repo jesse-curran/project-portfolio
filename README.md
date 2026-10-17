@@ -1,81 +1,90 @@
-# Portfolio
+# Jesse Curran — Robotics Portfolio
 
-Hello! I'm **Jesse Curran**—welcome to my project portfolio!
+M.S. Computer Science (Robotics), UC San Diego, expected Mar. 2027. I work on field autonomy: perception, traversability mapping, and state estimation on real robots.
 
-Below you'll find samples of my projects along with brief descriptions and visuals. Click on the project titles to explore more.
-
----
-
-## Table of Contents
-
-- [Projects](#projects)
-  - [Caddie AI Web App](#caddie-ai-web-app)
-  - [Time Series Forecast on Adjusted Admissions](#time-series-forecast-on-adjusted-admissions)
-  - [Macroeconomic Indicators using FRED API](#macroeconomic-indicators-using-fred-api)
-  - [Wordle Hangman in C](#wordle-hangman-in-c)
+[Resume (PDF)](assets/resume_jessecurran.pdf) · [jecurran@ucsd.edu](mailto:jecurran@ucsd.edu) · [LinkedIn](https://linkedin.com/in/jessecurran) · [GitHub](https://github.com/jesse-curran)
 
 ---
 
-## Projects
+## Demos
 
-### Caddie AI Web App
+### Traversability mapping on an autonomous vehicle (UCSD AVL)
 
-[**View Project Repository**](https://github.com/jesse-curran/my-programs/tree/main/caddie_ai)
+<table>
+<tr>
+<td width="50%"><a href="https://drive.google.com/file/d/1GEUTlW8xf6S9FQKn1Hj8cLjt9QhWOisc/view"><img src="assets/demos/trav_drive.gif" alt="Real-time traversability score while driving"></a></td>
+<td width="50%"><a href="https://drive.google.com/file/d/1J1jpboLTH48mWtOJMagFSADcMSq-2Yyy/view"><img src="assets/demos/trav_costmap.gif" alt="Traversability layers feeding the Nav2 costmap"></a></td>
+</tr>
+<tr>
+<td>Real-time terrain cost from LiDAR geometry and camera semantics while driving campus paths. <a href="https://drive.google.com/file/d/1GEUTlW8xf6S9FQKn1Hj8cLjt9QhWOisc/view">▶ full video</a></td>
+<td>The same cost drives the Nav2 costmap (green free, red lethal). <a href="https://drive.google.com/file/d/1J1jpboLTH48mWtOJMagFSADcMSq-2Yyy/view">▶ full video</a> · <a href="https://drive.google.com/drive/folders/1aIm6Ej1MbcgjwUutnlQ2ZSbl6wjdA8O6">all clips</a></td>
+</tr>
+</table>
 
-![Caddie AI Advice](https://github.com/user-attachments/assets/d73e56f0-63ab-452b-85db-552413a6d115)
+### CPU-only person following on the edge (Spot, RGB-D)
 
-An innovative web application that provides personalized caddie advice for golfers. Features include:
+<a href="https://docs.google.com/videos/d/1tnw38e2yC2o_S_IRQn3Sl8Zu3tP0-nNNbav365rLAkU/edit?usp=sharing"><img src="assets/demos/follower_compare.gif" alt="Handoff, control, and production identity policies on the same recording"></a>
 
-- **Login Authentication**
-- **Profile CRUD Operations**
-- **Course Selection**
-- **Caddie Advice**
+The three panels show the same recording replayed through three identity policies. A green box means the follower is locked on the enrolled person. Handoff is the follower as I received it. Control is the same identity logic on my faster CPU detector. Production is my adaptive identity layer. [▶ full video](https://docs.google.com/videos/d/1tnw38e2yC2o_S_IRQn3Sl8Zu3tP0-nNNbav365rLAkU/edit?usp=sharing)
 
----
+F-score is the harmonic mean of recall and precision. All scores come from the demo recording:
 
-### Time Series Forecast on Adjusted Admissions
+| Section | Handoff F | Control F | **Production F** | Production precision | Production stolen frames |
+|---|---|---|---|---|---|
+| Outdoor | 0.343 | 0.454 | **0.644** | 0.976 | 13 |
+| Sun–shade transition | 0.098 | 0.186 | **0.500** | 1.000 | 0 |
+| Indoor | 0.207 | 0.227 | **0.577** | 1.000 | 0 |
 
-[**View Project Repository**](https://github.com/jesse-curran/my-programs/tree/main/machine_learning/time_series_financial_forecast)
+Production raises F-score in every lighting regime and keeps precision near 1. A stolen frame is a frame where the follower locks onto the wrong person. The largest gain is in the sun–shade transition, which is the original system's known failure case.
 
-![Prophet Model Output](https://github.com/user-attachments/assets/d0c35902-132c-474b-b289-00c333f8ba5a)
+### LiDAR obstacle detection
 
-Developed a series of **Prophet Models** utilizing dynamic object-oriented design with hyperparameter tuning through parameter grid iteration. Built across **7 regions** with optimized model parameters to predict adjusted admissions. This model aids in developing a financial forecast. The graph above showcases test results from the model's performance.
+<img src="assets/demos/lidar_clustering.gif" width="640" alt="Ground segmentation and DBSCAN clustering at a roundabout">
 
----
-
-### Wordle Hangman in C
-
-[**View Project Repository**](https://github.com/jesse-curran/my-programs/tree/main/wordle_hangman_in_C)
-
-![Wordle Hangman](https://github.com/user-attachments/assets/c6de6182-e6d0-4b07-b303-7e5edcbba184)
-
-A classic Hangman game implemented in **C**, using the entire Wordle database. Test your vocabulary and survival skills—can you guess the word before it's too late?
-
----
-
-### Macroeconomic Indicators using FRED API
-
-[**View Project Repository**](https://github.com/jesse-curran/my-programs/tree/main/macroecon_indicators)
-
-![Data Retrieval from FRED API](https://github.com/user-attachments/assets/4e18a688-c4d8-4f9d-a6ac-59f696aadb48)
-
-A project that interfaces with the Federal Reserve Economic Data (FRED) API to retrieve and analyze macroeconomic indicators, working as a shortcut for data retrieval and analysis. This tool helps in visualizing economic trends and patterns.
+I built a C++ pipeline that runs ground segmentation, DBSCAN clustering, and 3D bounding boxes on LiDAR scans at a campus roundabout.
 
 ---
 
-### Finance Automation Example
+## Research and engineering
 
-[**View Project Repository**](https://github.com/jesse-curran/my-programs/tree/main/work_programming/work_programming_scripts.pdf)
+**Graduate Researcher, Autonomous Vehicles Lab, UC San Diego** (Advisor: Henrik I. Christensen) · Jan. 2026–present
+- I am developing on-road and off-road air–ground autonomy. The work covers LiDAR–semantic traversability mapping, Starlink teleoperation, and risk-aware navigation (paper in preparation).
+- I built the traversability baseline in ROS 2 from published components:
+  - Patchwork++ separates ground from non-ground points.
+  - ETH `elevation_mapping_cupy` builds the elevation map.
+  - `grid_map` and `traversability_estimation` compute slope, roughness, and step height.
+  - YOLO ADE20K semantics are projected into the map.
+  - My cost policy fuses all layers into a Nav2 costmap.
+- I built and field-tested a ROS 2 Nav2 stack for a GEM e6 vehicle and drove it autonomously for 0.5 mi.
+- I integrated FAST-LIO2 LiDAR–inertial localization and measured its error over a 1-mile route.
+- I built camera–LiDAR perception: YOLO on TensorRT, the C++ LiDAR 3D detector above, and LiDAR–RealSense depth fusion.
+- I ran PX4 UAV waypoint flights alongside the vehicle in joint air–ground field tests. I also wrote a C++ OpenCV ROS 2 detection node for one UAV.
 
-![500 Excel Files Consolidated](https://github.com/user-attachments/assets/04e87f3d-439c-4545-bfcc-2736afe2c814)
+**Edge person follower for a quadruped** (with Julian Raheema, paper in preparation) · 2026
+- A follower's most dangerous error is locking onto the wrong person. I redesigned the identity layer of an RGB-D Spot follower so it runs CPU-only.
+- The layer combines Kalman tracking, a re-identification memory that adapts online, and a ridge classifier. It runs at 10.5 FPS with no GPU.
 
-
-A simple python program that consolidates data of 500+ excel files, automated with windows task scheduler. This particular process leveraged parallelization and excel reading libraries. Aided in real time data awareness of stakeholders.
+**Robotics Autonomy Engineer Intern, NIWC Pacific** · Oct. 2026–present
+- I research and develop drone-swarm and UAV autonomy for the RESTORE Lab.
 
 ---
 
-*Thank you for visiting my portfolio! Feel free to explore the projects and reach out if you'd like to collaborate or have any questions.*
+## Coursework projects
+
+| | Project | Methods |
+|---|---|---|
+| <img src="assets/figures/icp_pose_graph.png" width="180"> | **LiDAR SLAM with loop closure** (ECE 276A) · [maps](assets/figures/occupancy_texture_map.png) | I implemented ICP scan matching and GTSAM pose-graph optimization with loop closure, then built an occupancy grid and an RGB-D texture map. The plot shows ICP odometry (red) before loop closure and the pose graph (blue) after. |
+| <img src="assets/figures/vi_ekf_slam.png" width="180"> | **Visual–inertial SLAM** (ECE 276A) | I wrote an EKF on SE(3), the group of 3D rigid-body poses. IMU kinematics predict the pose, and stereo landmark observations correct it. |
+| <img src="assets/figures/orientation_panorama.png" width="180"> | **Orientation estimation and panorama** (ECE 276A) | I estimated IMU orientation with quaternion optimization, then used it to stitch camera frames into a panorama. |
+| | **Autonomous mobile rover** (CSE 276A) | I built a ROS 2 sense–plan–act stack. An EKF fuses AprilTag detections with wheel odometry, and a PID controller tracks the planned trajectory. |
+
+**Relevant courses:** Robot Sensing & Estimation, Introduction to Robotics, Artificial Intelligence, Human–Robot Interaction, Math for Robotics, Embedded Systems. I also attended the University of Southern Denmark summer school in robotics (2026).
 
 ---
 
-**Note:** This README is a reflection of my ongoing work and will be updated regularly with new projects and enhancements.
+## Skills
+
+- **Languages and tools:** Python, C++, C; Linux, Git, Docker
+- **Robotics software:** ROS 2, Nav2, PX4, GTSAM, FAST-LIO2, RViz, Foxglove
+- **Perception and ML:** PyTorch, OpenCV, TensorRT, OpenVINO, YOLO
+- **Hardware:** LiDAR, Intel RealSense RGB-D, IMUs; Boston Dynamics Spot, PX4 UAVs, GEM e6, UR3e
