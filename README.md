@@ -73,10 +73,12 @@ I built a C++ pipeline that runs ground segmentation, DBSCAN clustering, and 3D 
 
 | | Project | Methods |
 |---|---|---|
-| <img src="assets/figures/icp_pose_graph.png" width="180"> | **LiDAR SLAM with loop closure** (ECE 276A) · [maps](assets/figures/occupancy_texture_map.png) | I implemented ICP scan matching and GTSAM pose-graph optimization with loop closure, then built an occupancy grid and an RGB-D texture map. The plot shows ICP odometry (red) before loop closure and the pose graph (blue) after. |
-| <img src="assets/figures/vi_ekf_slam.png" width="180"> | **Visual–inertial SLAM** (ECE 276A) | I wrote an EKF on SE(3), the group of 3D rigid-body poses. IMU kinematics predict the pose, and stereo landmark observations correct it. |
-| <img src="assets/figures/orientation_panorama.png" width="180"> | **Orientation estimation and panorama** (ECE 276A) | I estimated IMU orientation with quaternion optimization, then used it to stitch camera frames into a panorama. |
 | | **Autonomous mobile rover** (CSE 276A) | I built a ROS 2 sense–plan–act stack. An EKF fuses AprilTag detections with wheel odometry, and a PID controller tracks the planned trajectory. |
+| <img src="assets/figures/vi_ekf_slam.png" width="180"> | **Visual–inertial SLAM** (ECE 276A) | I wrote an EKF on SE(3), the group of 3D rigid-body poses. IMU kinematics predict the pose, and stereo landmark observations correct it. |
+| | **Voice-controlled Pokémon battle with robots** (CSE 276B, Human–Robot Interaction) | Players speak commands to their own robot, a Mini Pupper quadruped cast as Pikachu or a TurtleBot. Whisper transcribes the speech and MQTT carries the command to a ROS 2 game controller, which tells the robot what to do. I built the Pupper's ROS 2 behavior node (attack, protect, hurt, faint and celebrate moves, each with matching face images) and co-wrote the game controller. The study asks whether expressive robot reactions change how players perceive the robot's agency. |
+| | **LEGO pick-and-place with a UR3e arm** | I programmed a Universal Robots UR3e arm to pick and place LEGO bricks. |
+| <img src="assets/figures/icp_pose_graph.png" width="180"> | **LiDAR SLAM with loop closure** (ECE 276A) · [maps](assets/figures/occupancy_texture_map.png) | I implemented ICP scan matching and GTSAM pose-graph optimization with loop closure, then built an occupancy grid and an RGB-D texture map. The plot shows ICP odometry (red) before loop closure and the pose graph (blue) after. |
+| <img src="assets/figures/orientation_panorama.png" width="180"> | **Orientation estimation and panorama** (ECE 276A) | I estimated IMU orientation with quaternion optimization, then used it to stitch camera frames into a panorama. |
 
 **Relevant courses:** Robot Sensing & Estimation, Introduction to Robotics, Artificial Intelligence, Human–Robot Interaction, Math for Robotics, Embedded Systems. I also attended the University of Southern Denmark summer school in robotics (2026).
 
