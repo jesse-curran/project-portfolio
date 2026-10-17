@@ -1,6 +1,6 @@
 # Jesse Curran
 
-I build perception, planning, and navigation for robots that work outdoors. I am an M.S. student in Computer Science (Robotics) at UC San Diego, finishing in March 2027.
+I want robots to sense, plan, learn, and act on their own in the field. I am an M.S. student in Computer Science (Robotics) at UC San Diego, finishing in March 2027.
 
 **Website:** [jesse-curran.github.io/project-portfolio](https://jesse-curran.github.io/project-portfolio/)
 
